@@ -24,13 +24,13 @@ const doubleChar = str => [...str].map(char => char.repeat(2)).join('')
 // String> in Rust).
 
 function divisors(integer) {
-    if(integer <= 1) {
-      return 'Please provide an integer greater than 1.'
-    }
-    const divisorsArr = []
-    for (var i = 2; i <= Math.floor(integer / 2); ++i) if (integer % i == 0) divisorsArr.push(i);
-    return divisorsArr.length ? divisorsArr : integer + ' is prime'
-  };
+  if(integer <= 1) {
+    return 'Please provide an integer greater than 1.'
+  }
+  const divisorsArr = []
+  for (var i = 2; i <= Math.floor(integer / 2); ++i) if (integer % i == 0) divisorsArr.push(i);
+  return divisorsArr.length ? divisorsArr : integer + ' is prime'
+};
 //  1. Check if n is less than or equal to 1.
 //  2. Initialize an empty array divisorsArray to store divisors.
 //  3. Iterate through potential divisors using a for loop
@@ -40,3 +40,24 @@ function divisors(integer) {
 //  5. Sort and return the array of divisors.
 
 // ----------------------------------------------------------------------------------------------------------
+
+// 3)-----Playing with digits-----
+
+// Some numbers have funny properties. For example:
+// 89 --> 8¹ + 9² = 89 * 1
+// 695 --> 6² + 9³ + 5⁴= 1390 = 695 * 2
+// 46288 --> 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
+// Given two positive integers n and p, we want to find a positive integer k, 
+// if it exists, such that the sum of the digits of n raised to consecutive powers 
+// starting from p is equal to k * n.
+
+function digPow(n, p){
+  let arrN = n.toString().split('').map(Number)
+  let newArr = []
+  for (let i = 0; i < arrN.length; i++) {
+    let sumN = arrN[i] ** (p + i)
+    newArr.push(sumN)
+  }
+  newArr = newArr.reduce((a, b) => a + b, 0)
+  return Number.isInteger(newArr / n) ? newArr / n : -1
+}
