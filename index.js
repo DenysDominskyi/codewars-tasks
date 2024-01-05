@@ -82,6 +82,13 @@ function digPow(n, p){
 
 
 function tribonacci(signature,n){
+
+  // if (n === 0) return [];
+  // for (let i = 3; i < n; i++) {
+  //   signature.push(signature.slice(i - 3, i).reduce((sum, n) => sum + n, 0));
+  // }
+  // return signature.slice(0, n);
+  
   // If n is 0, return an empty array
   if(n === 0) return []
   // If n is less than or equal to 3, return the first n elements of the signature
@@ -100,6 +107,19 @@ function tribonacci(signature,n){
   return tribonacciSequence
 }
 
+
 // ----------------------------------------------------------------------------------------------------------
 
-// 5)-----  -----
+// 5)-----Last digit of a large number-----
+
+// Define a function that takes in two non-negative integers a and b and returns 
+// the last decimal digit of a^b. Note that a and b may be very large! For example, 
+// the last decimal digit of 9^7  is 9, since 9^7 = 4782969. You may assume that the 
+// input will always be valid.  The last decimal digit of (2^200)^2^300 , which has 
+// over 10^92 decimal digits, is 6. Also, please take 0^0  to be 1. You may assume 
+// that the input will always be valid. Examples
+// lastDigit(4n, 1n)            // returns 4n
+// lastDigit(4n, 2n)            // returns 6n
+// lastDigit(9n, 7n)            // returns 9n  
+// lastDigit(10n,10000000000n)  // returns 0n
+
