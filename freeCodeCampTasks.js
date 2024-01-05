@@ -49,4 +49,4 @@ const largestOfFour = arr => {
 
 const confirmEnding = (str, target) => str.substring(str.length - target.length) === target
 
-console.log(confirmEnding("Bastian", "n"))
+// console.log(confirmEnding("Bastian", "n"))
