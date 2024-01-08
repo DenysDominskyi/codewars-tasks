@@ -149,8 +149,36 @@ function digitalRoot(n) {
   return n;
 }
 
-// Example usage:
-// console.log(digitalRoot(16));      // Output: 7
-// console.log(digitalRoot(942));     // Output: 6
-// console.log(digitalRoot(132189));  // Output: 6
 // console.log(digitalRoot(493193));  // Output: 2
+
+
+// ----------------------------------------------------------------------------------------------------------
+
+
+// 7)----- Extract the domain name from a URL -----
+
+// Write a function that when given a URL as a string, parses out just the domain 
+// name and returns it as a string. For example:
+
+// * url = "http://github.com/carbonfive/raygun" -> domain name = "github"
+// * url = "http://www.zombie-bites.com"         -> domain name = "zombie-bites"
+// * url = "https://www.cnet.com"                -> domain name = cnet"
+
+function getDomainName(url) {
+  // Remove protocol (http:// or https://) and www.
+  let domain = url.replace(/(https?:\/\/)?(www\.)?/, '');
+  // // Extract domain name using regex
+  const match = domain.match(/^([a-z0-9-]+)\./i);
+  
+  // // Return the matched domain name or an empty string if no match found
+  return match ? match[1] : '';
+}
+
+const url1 = "http://github.com/carbonfive/raygun";
+// console.log(getDomainName(url1));
+
+
+// ----------------------------------------------------------------------------------------------------------
+
+
+// 8)-----  -----
