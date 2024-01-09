@@ -256,4 +256,4 @@ function solution(string) {
   return newString
 }
 
-// console.log(solution('whatIfIWriteThisText'))
+console.log(solution('whatIfIWriteThisText'))
