@@ -1,4 +1,5 @@
-// ----------------------------------------------------------------------------------------------------------
+// _______________________________________________________________________________________________________________
+
 // 1)-----Double Char-----
 // Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
 
@@ -13,7 +14,7 @@ const doubleChar = str => [...str].map(char => char.repeat(2)).join('')
 // 'map' method is used to repeat each character twice
 // join('') is used to concatenate the characters back into a string
 
-// ----------------------------------------------------------------------------------------------------------
+// _______________________________________________________________________________________________________________
 
 // 2)-----Find the divisors!-----
 
@@ -39,7 +40,7 @@ function divisors(integer) {
 //      function returns a string indicating that n is prime.
 //  5. Sort and return the array of divisors.
 
-// ----------------------------------------------------------------------------------------------------------
+// _______________________________________________________________________________________________________________
 
 // 3)-----Playing with digits-----
 
@@ -62,7 +63,7 @@ function digPow(n, p){
   return Number.isInteger(newArr / n) ? newArr / n : -1
 }
 
-// ----------------------------------------------------------------------------------------------------------
+// _______________________________________________________________________________________________________________
 
 // 4)-----Tribonacci Sequence-----
 
@@ -79,7 +80,6 @@ function digPow(n, p){
 // a signature array/list, returns the first n elements - signature included of the so seeded sequence.
 // Signature will always contain 3 numbers; n will always be a non-negative number; if n == 0, then return 
 // an empty array (except in C return NULL) and be ready for anything else which is not clearly specified ;)
-
 
 function tribonacci(signature,n){
 
@@ -107,8 +107,7 @@ function tribonacci(signature,n){
   return tribonacciSequence
 }
 
-
-// ----------------------------------------------------------------------------------------------------------
+// _______________________________________________________________________________________________________________
 
 // 5)-----Last digit of a large number-----
 
@@ -123,9 +122,7 @@ function tribonacci(signature,n){
 // lastDigit(9n, 7n)            // returns 9n  
 // lastDigit(10n,10000000000n)  // returns 0n
 
-
-// ----------------------------------------------------------------------------------------------------------
-
+// _______________________________________________________________________________________________________________
 
 // 6)-----Last digit of a large number-----
 
@@ -151,9 +148,7 @@ function digitalRoot(n) {
 
 // console.log(digitalRoot(493193));  // Output: 2
 
-
-// ----------------------------------------------------------------------------------------------------------
-
+// _______________________________________________________________________________________________________________
 
 // 7)----- Extract the domain name from a URL -----
 
@@ -177,9 +172,7 @@ function getDomainName(url) {
 const url1 = "http://github.com/carbonfive/raygun";
 // console.log(getDomainName(url1));
 
-
-// ----------------------------------------------------------------------------------------------------------
-
+// _______________________________________________________________________________________________________________
 
 // 8)----- Roman Numerals Encoder -----
 
@@ -230,9 +223,7 @@ function solution(number){
 
 // console.log(solution(1994))
 
-
-// ----------------------------------------------------------------------------------------------------------
-
+// _______________________________________________________________________________________________________________
 
 // 9)----- Break camelCase -----
 // Complete the solution so that the function will break up camel casing, using a space between words.
@@ -256,4 +247,27 @@ function solution(string) {
   return newString
 }
 
-console.log(solution('whatIfIWriteThisText'))
+// console.log(solution('whatIfIWriteThisText'))
+
+// _______________________________________________________________________________________________________________
+
+// 10)----- WeIrD StRiNg CaSe -----
+// Write a function that accepts a string, and returns the same string with all 
+// even indexed characters in each word upper cased, and all odd indexed characters 
+// in each word lower cased. The indexing just explained is zero based, so the 
+// zero-ith index is even, therefore that character should be upper cased and you 
+// need to start over for each word.
+
+// The passed in string will only consist of alphabetical characters and spaces(' '). 
+// Spaces will only be present if there are multiple words. Words will be separated 
+// by a single space(' ').
+
+function capitalizeEvenIndices(str) {
+  return str.split(' ').map(word =>
+    word.split('').map((char, index) =>
+      index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
+    ).join('')
+  ).join(' ');
+}
+
+// console.log(capitalizeEvenIndices('If i write something, how it will looks like?'))
