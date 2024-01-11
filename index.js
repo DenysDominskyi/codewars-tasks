@@ -1,6 +1,7 @@
 // _______________________________________________________________________________________________________________
 
 // 1)-----Double Char-----
+
 // Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
 
 // Examples (Input -> Output):
@@ -226,6 +227,7 @@ function solution(number){
 // _______________________________________________________________________________________________________________
 
 // 9)----- Break camelCase -----
+
 // Complete the solution so that the function will break up camel casing, using a space between words.
 
 // Example
@@ -252,6 +254,7 @@ function solution(string) {
 // _______________________________________________________________________________________________________________
 
 // 10)----- WeIrD StRiNg CaSe -----
+
 // Write a function that accepts a string, and returns the same string with all 
 // even indexed characters in each word upper cased, and all odd indexed characters 
 // in each word lower cased. The indexing just explained is zero based, so the 
@@ -265,9 +268,48 @@ function solution(string) {
 function capitalizeEvenIndices(str) {
   return str.split(' ').map(word =>
     word.split('').map((char, index) =>
-      index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
+    index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
     ).join('')
-  ).join(' ');
+    ).join(' ')
+}
+  
+// console.log(capitalizeEvenIndices('If i write something, how it will looks like?'))
+  
+// _______________________________________________________________________________________________________________
+  
+// 11)----- Maximum subarray sum -----
+
+// The maximum sum subarray problem consists in finding the maximum sum 
+// of a contiguous subsequence in an array or list of integers:
+
+// maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4])
+// should be 6: [4, -1, 2, 1]
+// Easy case is when the list is made up of only positive numbers and the maximum 
+// sum is the sum of the whole array. If the list is made up of only negative 
+// numbers, return 0 instead.
+
+// Empty list is considered to have zero greatest sum. Note that the empty list 
+// or array is also a valid sublist/subarray.
+
+function maxSequence(arr) {
+  if (arr.length === 0) {
+    return 0;
+  }
+  
+  let maxSum = 0;
+  let currentSum = 0;
+  
+  for (const num of arr) {
+    currentSum = Math.max(0, currentSum + num);
+    maxSum = Math.max(maxSum, currentSum);
+  }
+  
+  return maxSum;
 }
 
-// console.log(capitalizeEvenIndices('If i write something, how it will looks like?'))
+// console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, 5, -4]))
+
+// _______________________________________________________________________________________________________________
+  
+// 12)-----  -----
+
