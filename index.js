@@ -123,6 +123,29 @@ function tribonacci(signature,n){
 // lastDigit(9n, 7n)            // returns 9n  
 // lastDigit(10n,10000000000n)  // returns 0n
 
+function lastDigit(a, b) {
+  const base = Number(a % 10n);
+
+  if (base === 0n || base === 1n) {
+    return base;
+  }
+
+  let result = 1n;
+  a = a % 10n; // Reduce 'a' to its last decimal digit
+
+  while (b > 0n) {
+    if (b % 2n === 1n) {
+      result = (result * a) % 10n;
+    }
+    a = (a * a) % 10n;
+    b = b / 2n;
+  }
+
+  return result;
+}
+
+// console.log(lastDigit(9n, 7n))
+
 // _______________________________________________________________________________________________________________
 
 // 6)-----Last digit of a large number-----
@@ -138,7 +161,6 @@ function tribonacci(signature,n){
 // 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
 
 function digitalRoot(n) {
-  debugger
   // Convert the number to a string to iterate through its digits
   while (n >= 10) {
     // Sum the digits using reduce
@@ -311,5 +333,53 @@ function maxSequence(arr) {
 
 // _______________________________________________________________________________________________________________
   
-// 12)-----  -----
+// 12)----- Next bigger number with the same digits -----
 
+// Create a function that takes a positive integer and returns the next bigger number that 
+// can be formed by rearranging its digits. For example:
+//   12 ==> 21
+//  513 ==> 531
+// 2017 ==> 2071
+// If the digits can't be rearranged to form a bigger number, return -1 (or nil in Swift, 
+// None in Rust):
+//   9 ==> -1
+// 111 ==> -1
+// 531 ==> -1
+
+function nextBiggerNumber(num) {
+  // Convert the number to an array of digits
+  const digits = num.toString().split('');
+  
+  // Find the first pair of digits from the right that is in decreasing order
+  let i = digits.length - 1;
+  while (i > 0 && digits[i] <= digits[i - 1]) {
+    i--;
+  }
+  
+  // If no such pair is found, the number is already the largest possible.
+  // Return -1 to indicate no greater number is possible
+  if (i === 0) return -1; 
+  
+  // Find the smallest digit to the right of the pair and larger than the digit at the pair
+  let j = digits.length - 1;
+  while (digits[j] <= digits[i - 1]) {
+    j--;
+  }
+  
+  // Swap the digits at positions i-1 and j
+  [digits[i - 1], digits[j]] = [digits[j], digits[i - 1]];
+  
+  // Reverse the digits to the right of position i-1
+  digits.splice(i, digits.length - i, ...digits.slice(i).reverse());
+  
+  // Convert the array back to a number
+  const result = parseInt(digits.join(''), 10);
+  
+  return result;
+}
+
+// console.log(nextBiggerNumber(2017))
+
+// _______________________________________________________________________________________________________________
+  
+// 13)-----  -----
