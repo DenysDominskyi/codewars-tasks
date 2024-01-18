@@ -80,12 +80,21 @@ top: 0;
 left: 0;
 }
 svg {
+<<<<<<< HEAD
   display: none;
 }
 .gradients-container {
   filter: url(#goo) blur(40px) ;
   width: 100%;
   height: 100%;
+=======
+    display: none;
+}
+.gradients-container {
+    filter: url(#goo) blur(40px) ;
+    width: 100%;
+    height: 100%;
+>>>>>>> 0c10cc4291b7f2b73c82e5714a455e45bb8c2f1c
 }
 .g1 {
     position: absolute;
@@ -167,6 +176,7 @@ svg {
 }
 
 .interactive {
+<<<<<<< HEAD
     position: absolute;
     background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
     mix-blend-mode: var(--blending);
@@ -194,4 +204,17 @@ svg {
   100% {
     filter: hue-rotate(0deg);
   }
+=======
+    position: fixed;
+    background: radial-gradient(circle at center, rgba(var(--color-interactive), 1) 0, rgba(var(--color-interactive), 0) 10%) no-repeat;
+    mix-blend-mode: var(--blending);
+
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+
+    opacity: .7;
+    transform: translate(-50%, -50%);
+    /* transition: .15s ease-out; */
+>>>>>>> 0c10cc4291b7f2b73c82e5714a455e45bb8c2f1c
 }
