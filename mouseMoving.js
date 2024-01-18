@@ -11,5 +11,3 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('mouseout', () => {
     cursor.style.display = 'none'
 })
-
-console.log(cursor.style.transform)
