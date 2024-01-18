@@ -116,3 +116,17 @@ function chunkArrayInGroups(arr, size) {
   return newArr;
 }
 // console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2))
+
+// ----------------------------------------------------------------------------------------------------------
+
+const numbers = [ 8.8, 8.6, 9, 8.3 ];
+
+const average = numbers.reduce((acc, num, index, arr) => {
+  if(index === arr.length - 1) {
+    return (acc + num) / arr.length
+  } else {
+    return acc + num
+  }
+})
+
+// console.log(average)

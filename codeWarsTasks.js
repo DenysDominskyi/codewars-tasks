@@ -1,3 +1,5 @@
+
+
 // _______________________________________________________________________________________________________________
 
 // 1)-----Double Char-----
@@ -348,38 +350,70 @@ function maxSequence(arr) {
 
 function nextBiggerNumber(num) {
   // Convert the number to an array of digits
-  const digits = num.toString().split('');
+  const digits = num.toString().split('')
   
   // Find the first pair of digits from the right that is in decreasing order
   let i = digits.length - 1;
   while (i > 0 && digits[i] <= digits[i - 1]) {
-    i--;
+    i--
   }
   
   // If no such pair is found, the number is already the largest possible.
   // Return -1 to indicate no greater number is possible
-  if (i === 0) return -1; 
+  if (i === 0) return -1
   
   // Find the smallest digit to the right of the pair and larger than the digit at the pair
-  let j = digits.length - 1;
+  let j = digits.length - 1
   while (digits[j] <= digits[i - 1]) {
     j--;
   }
   
   // Swap the digits at positions i-1 and j
-  [digits[i - 1], digits[j]] = [digits[j], digits[i - 1]];
+  [digits[i - 1], digits[j]] = [digits[j], digits[i - 1]]
   
   // Reverse the digits to the right of position i-1
-  digits.splice(i, digits.length - i, ...digits.slice(i).reverse());
+  digits.splice(i, digits.length - i, ...digits.slice(i).reverse())
   
   // Convert the array back to a number
-  const result = parseInt(digits.join(''), 10);
+  const result = parseInt(digits.join(''), 10)
   
-  return result;
+  return result
 }
 
 // console.log(nextBiggerNumber(2017))
 
 // _______________________________________________________________________________________________________________
   
-// 13)-----  -----
+// 13)----- Pete, the baker -----
+
+// Pete likes to bake some cakes. He has some recipes and ingredients. Unfortunately 
+// he is not good in maths. Can you help him to find out, how many cakes he could bake 
+// considering his recipes?
+
+// Write a function cakes(), which takes the recipe (object) and the available 
+// ingredients (also an object) and returns the maximum number of cakes Pete can 
+// bake (integer). For simplicity there are no units for the amounts (e.g. 1 lb of 
+//   flour or 200 g of sugar are simply 1 or 200). Ingredients that are not present 
+//   in the objects, can be considered as 0.
+
+function cakes(recipe, available) {
+  // Use Object.keys to iterate over recipe ingredients
+  return Object.keys(recipe).reduce((minCakes, ingredient) => {
+    // Check if the ingredient is present in the available ingredients
+    if (available.hasOwnProperty(ingredient)) {
+      // Calculate the ratio of available ingredient to recipe ingredient
+      const ratio = Math.floor(available[ingredient] / recipe[ingredient]);
+      // Update minCakes to the minimum of current minCakes and ratio
+      return Math.min(minCakes, ratio);
+    } else {
+      // If the ingredient is not present, Pete can't bake any cakes
+      return 0
+    }
+  }, Infinity) // Initialize minCakes to Infinity for the first comparison
+}
+
+// Example usage:
+const recipe = {flour: 500, sugar: 200, eggs: 1}
+const available = {flour: 18000, sugar: 25000, eggs: 400, milk: 1000}
+
+// console.log(cakes(recipe, available))
