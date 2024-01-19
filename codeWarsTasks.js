@@ -417,3 +417,34 @@ const recipe = {flour: 500, sugar: 200, eggs: 1}
 const available = {flour: 18000, sugar: 25000, eggs: 400, milk: 1000}
 
 // console.log(cakes(recipe, available))
+
+// _______________________________________________________________________________________________________________
+  
+// 14)----- RGB To Hex Conversion -----
+
+// The rgb function is incomplete. Complete it so that passing in RGB decimal values will 
+// result in a hexadecimal representation being returned. Valid decimal values for RGB 
+// are 0 - 255. Any values that fall out of that range must be rounded to the closest valid value.
+
+function rgb(r, g, b) {
+  // Ensure values are in the valid range (0 - 255)
+  r = Math.max(0, Math.min(255, Math.round(r)));
+  g = Math.max(0, Math.min(255, Math.round(g)));
+  b = Math.max(0, Math.min(255, Math.round(b)));
+  
+  // Convert decimal values to hexadecimal and pad with zeros if needed
+  const hexR = r.toString(16).padStart(2, '0');
+  const hexG = g.toString(16).padStart(2, '0');
+  const hexB = b.toString(16).padStart(2, '0');
+  
+  // Concatenate the hexadecimal values
+  let color = hexR + hexG + hexB
+  
+  return color.toUpperCase()
+}
+
+// console.log(rgb(148, 0, 211))
+
+// _______________________________________________________________________________________________________________
+  
+// 15)-----  -----
