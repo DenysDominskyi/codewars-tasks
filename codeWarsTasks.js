@@ -213,7 +213,7 @@ const url1 = "http://github.com/carbonfive/raygun";
 
 // solution(1000);  should return 'M'
 
-function solution(number){
+function toRoman(number){
   if (number < 1 || number > 3999) {
     return "Number out of range (1-3999).";
   }
@@ -245,8 +245,36 @@ function solution(number){
   
   return result;
 }
+// ------------------------------
+function toArabic(roman) {
+  const romanNumerals = {
+    "I": 1,
+    "V": 5,
+    "X": 10,
+    "L": 50,
+    "C": 100,
+    "D": 500,
+    "M": 1000
+  };
 
-// console.log(solution(1994))
+  let result = 0;
+
+  for (let i = 0; i < roman.length; i++) {
+    const currentSymbolValue = romanNumerals[roman[i]];
+    const nextSymbolValue = romanNumerals[roman[i + 1]];
+
+    if (nextSymbolValue > currentSymbolValue) {
+      result += nextSymbolValue - currentSymbolValue;
+      i++; // Skip the next symbol since it's already considered
+    } else {
+      result += currentSymbolValue;
+    }
+  }
+
+  return result;
+}
+// console.log(toRoman(1994))
+// console.log(toArabic("MDCLXVI"))
 
 // _______________________________________________________________________________________________________________
 
@@ -496,4 +524,64 @@ function isSolved(board) {
 
   // _______________________________________________________________________________________________________________
     
-  // 16)-----  -----
+  // 16)----- Roman Numerals Helper -----
+
+class RomanNumerals {
+  
+  static toRoman(number) {
+    const romanNumerals = [
+      { value: 1000, symbol: "M" },
+      { value: 900, symbol: "CM" },
+      { value: 500, symbol: "D" },
+      { value: 400, symbol: "CD" },
+      { value: 100, symbol: "C" },
+      { value: 90, symbol: "XC" },
+      { value: 50, symbol: "L" },
+      { value: 40, symbol: "XL" },
+      { value: 10, symbol: "X" },
+      { value: 9, symbol: "IX" },
+      { value: 5, symbol: "V" },
+      { value: 4, symbol: "IV" },
+      { value: 1, symbol: "I" }
+    ];
+
+    let result = "";
+
+    for (let i = 0; i < romanNumerals.length; i++) {
+      while (number >= romanNumerals[i].value) {
+        result += romanNumerals[i].symbol;
+        number -= romanNumerals[i].value;
+      }
+    }
+
+    return result;
+  }
+
+  static fromRoman(roman) {
+    const romanNumerals = {
+      "I": 1,
+      "V": 5,
+      "X": 10,
+      "L": 50,
+      "C": 100,
+      "D": 500,
+      "M": 1000
+    };
+
+    let result = 0;
+
+    for (let i = 0; i < roman.length; i++) {
+      const currentSymbolValue = romanNumerals[roman[i]];
+      const nextSymbolValue = romanNumerals[roman[i + 1]];
+
+      if (nextSymbolValue > currentSymbolValue) {
+        result += nextSymbolValue - currentSymbolValue;
+        i++; // Skip the next symbol since it's already considered
+      } else {
+        result += currentSymbolValue;
+      }
+    }
+
+    return result;
+  }
+}
