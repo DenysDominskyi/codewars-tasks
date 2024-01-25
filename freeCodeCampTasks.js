@@ -130,3 +130,48 @@ const average = numbers.reduce((acc, num, index, arr) => {
 })
 
 // console.log(average)
+
+// ----------------------------------------------------------------------------------------------------------
+
+// 13)----- Search and Replace -----
+
+function myReplace(str, before, after) {
+  const newArr = str.split(' ')
+  const [wordToChange] = newArr.filter(i => i === before)
+  const replace = wordToChange[0] === wordToChange[0].toUpperCase() 
+  ? after[0].toUpperCase() + after.slice(1)
+  : after[0].toLowerCase() + after.slice(1)
+  return newArr.map(i => i === before ? replace : i).join(' ');
+}
+
+// console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped"))
+
+// ----------------------------------------------------------------------------------------------------------
+
+// 14)----- Missing letters -----
+function fearNotLetter(str) {
+  for (let i = 0; i < str.length; i++) {
+   /* code of current character */
+   const charCode = str.charCodeAt(i);
+   
+   /* if code of current character is not equal to first character + no of iteration
+   then a letter was skipped */
+   if (charCode !== str.charCodeAt(0) + i) {
+     /* if current character skipped past a character find previous character and return */
+     return String.fromCharCode(charCode - 1);
+    }
+  }
+  return undefined;
+}
+// console.log(fearNotLetter("abce"))
+
+// ----------------------------------------------------------------------------------------------------------
+
+// 15)----- Sorted Union -----
+const uniteUnique = (...arr) => [...new Set(arr.flat())];
+
+// console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]))
+
+// ----------------------------------------------------------------------------------------------------------
+
+// 17)-----  -----
