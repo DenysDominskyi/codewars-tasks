@@ -525,12 +525,12 @@ function isSolved(board) {
   // _______________________________________________________________________________________________________________
     
   // 16)----- Roman Numerals Helper -----
-
-class RomanNumerals {
   
-  static toRoman(number) {
-    const romanNumerals = [
-      { value: 1000, symbol: "M" },
+  class RomanNumerals {
+    
+    static toRoman(number) {
+      const romanNumerals = [
+        { value: 1000, symbol: "M" },
       { value: 900, symbol: "CM" },
       { value: 500, symbol: "D" },
       { value: 400, symbol: "CD" },
@@ -544,16 +544,16 @@ class RomanNumerals {
       { value: 4, symbol: "IV" },
       { value: 1, symbol: "I" }
     ];
-
+    
     let result = "";
-
+    
     for (let i = 0; i < romanNumerals.length; i++) {
       while (number >= romanNumerals[i].value) {
         result += romanNumerals[i].symbol;
         number -= romanNumerals[i].value;
       }
     }
-
+    
     return result;
   }
 
@@ -567,13 +567,13 @@ class RomanNumerals {
       "D": 500,
       "M": 1000
     };
-
+    
     let result = 0;
-
+    
     for (let i = 0; i < roman.length; i++) {
       const currentSymbolValue = romanNumerals[roman[i]];
       const nextSymbolValue = romanNumerals[roman[i + 1]];
-
+      
       if (nextSymbolValue > currentSymbolValue) {
         result += nextSymbolValue - currentSymbolValue;
         i++; // Skip the next symbol since it's already considered
@@ -581,7 +581,41 @@ class RomanNumerals {
         result += currentSymbolValue;
       }
     }
-
+    
     return result;
   }
 }
+
+// _______________________________________________________________________________________________________________
+  
+// 17)----- Moving Zeros To The End -----
+
+// Write an algorithm that takes an array and moves all of the zeros to the 
+// end, preserving the order of the other elements.
+
+function moveZeros(arr) {
+  const zeroArr = arr.filter(e => e === 0)
+  return arr.filter(e => e !== 0).concat(zeroArr)
+  // return arr.sort((a, b) => b === 0 ? -1 : 0);
+}
+
+// console.log(moveZeros([false,1,0,1,2,0,1,3,"a"]))
+
+// _______________________________________________________________________________________________________________
+  
+// 18)-----  -----
+
+
+
+
+
+// _______________________________________________________________________________________________________________
+  
+// 19)-----  -----
+
+
+
+
+// _______________________________________________________________________________________________________________
+  
+// 20)-----  -----
