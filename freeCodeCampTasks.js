@@ -174,4 +174,65 @@ const uniteUnique = (...arr) => [...new Set(arr.flat())];
 
 // ----------------------------------------------------------------------------------------------------------
 
-// 17)-----  -----
+// 17)----- Sum All Primes -----
+function sumPrimes(num) {
+  // Check all numbers for primality
+  let primes = [];
+  for (let i = 2; i <= num; i++) {
+    if (primes.every((prime) => i % prime !== 0))
+      primes.push(i);
+  }
+  return primes.reduce((sum, prime) => sum + prime, 0);
+}
+// console.log(sumPrimes(10))
+
+  // ----------------------------------------------------------------------------------------------------------
+  
+  // 18)----- Smallest Common Multiple -----
+  
+  function smallestCommons(arr) {
+    // Setup
+    const [min, max] = arr.sort((a, b) => a - b);
+    const range = Array(max - min + 1)
+      .fill(0)
+      .map((_, i) => i + min);
+    // Largest possible value for SCM
+    const upperBound = range.reduce((prod, curr) => prod * curr);
+    // Test all multiples of 'max'
+    for (let multiple = max; multiple <= upperBound; multiple += max) {
+      // Check if every value in range divides 'multiple'
+      const divisible = range.every((value) => multiple % value === 0);
+      if (divisible) {
+        return multiple;
+      }
+    }
+  }
+  // console.log(smallestCommons([1, 5]))
+
+    // ----------------------------------------------------------------------------------------------------------
+    
+    // 19)----- Steamroller -----
+
+    function steamrollArray(arr) {
+      const flattenedArray = []
+      // Loop over array contents
+      for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+          // Recursively flatten entries that are arrays
+          //  and push into the flattenedArray
+          flattenedArray.push(...steamrollArray(arr[i]));
+        } else {
+          // Copy contents that are not arrays
+          flattenedArray.push(arr[i])
+        }
+      }
+      return flattenedArray;
+    }
+
+    // console.log(steamrollArray([1, [2], [3, [[4]]]]))
+
+
+
+    // ----------------------------------------------------------------------------------------------------------
+    
+    // 20)-----  -----
