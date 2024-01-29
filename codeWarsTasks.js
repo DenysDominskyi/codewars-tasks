@@ -603,10 +603,34 @@ function moveZeros(arr) {
 
 // _______________________________________________________________________________________________________________
   
-// 18)-----  -----
+// 18)----- Directions Reduction -----
 
+function dirReduc(arr){
+  const oppositeDirections = {
+    'NORTH': 'SOUTH',
+    'SOUTH': 'NORTH',
+    'EAST': 'WEST',
+    'WEST': 'EAST'
+  };
 
+  const simplifiedDirections = [];
 
+  for (const direction of arr) {
+    const lastDirection = simplifiedDirections[simplifiedDirections.length - 1];
+
+    if (lastDirection === oppositeDirections[direction]) {
+      // If the current direction is opposite to the last direction, remove the last direction
+      simplifiedDirections.pop();
+    } else {
+      // Otherwise, add the current direction to the simplified directions
+      simplifiedDirections.push(direction);
+    }
+  }
+
+  return simplifiedDirections;
+}
+
+// console.log(dirReduc(["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"]))
 
 
 // _______________________________________________________________________________________________________________
