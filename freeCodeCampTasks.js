@@ -231,8 +231,23 @@ function sumPrimes(num) {
 
     // console.log(steamrollArray([1, [2], [3, [[4]]]]))
 
-
+    // ----------------------------------------------------------------------------------------------------------
+    
+    // 20)----- Arguments Optional -----
+    function addTogether() {
+      const [first, second] = arguments;
+    
+      function addSecond(second) {
+        if (typeof (second) === "number") return first + second;
+      }
+    
+      if (typeof (first) === "number") {
+        if (arguments.length === 1) return addSecond;
+        if (arguments.length === 2) return addSecond(second);
+      }
+    }
+    // console.log(addTogether(2,5))
 
     // ----------------------------------------------------------------------------------------------------------
     
-    // 20)-----  -----
+    // 21)-----  -----
