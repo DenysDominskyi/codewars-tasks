@@ -186,68 +186,86 @@ function sumPrimes(num) {
 }
 // console.log(sumPrimes(10))
 
-  // ----------------------------------------------------------------------------------------------------------
-  
-  // 18)----- Smallest Common Multiple -----
-  
-  function smallestCommons(arr) {
-    // Setup
-    const [min, max] = arr.sort((a, b) => a - b);
-    const range = Array(max - min + 1)
-      .fill(0)
-      .map((_, i) => i + min);
-    // Largest possible value for SCM
-    const upperBound = range.reduce((prod, curr) => prod * curr);
-    // Test all multiples of 'max'
-    for (let multiple = max; multiple <= upperBound; multiple += max) {
-      // Check if every value in range divides 'multiple'
-      const divisible = range.every((value) => multiple % value === 0);
-      if (divisible) {
-        return multiple;
-      }
+// ----------------------------------------------------------------------------------------------------------
+
+// 18)----- Smallest Common Multiple -----
+
+function smallestCommons(arr) {
+  // Setup
+  const [min, max] = arr.sort((a, b) => a - b);
+  const range = Array(max - min + 1)
+    .fill(0)
+    .map((_, i) => i + min);
+  // Largest possible value for SCM
+  const upperBound = range.reduce((prod, curr) => prod * curr);
+  // Test all multiples of 'max'
+  for (let multiple = max; multiple <= upperBound; multiple += max) {
+    // Check if every value in range divides 'multiple'
+    const divisible = range.every((value) => multiple % value === 0);
+    if (divisible) {
+      return multiple;
     }
   }
-  // console.log(smallestCommons([1, 5]))
+}
+// console.log(smallestCommons([1, 5]))
 
-    // ----------------------------------------------------------------------------------------------------------
-    
-    // 19)----- Steamroller -----
+// ----------------------------------------------------------------------------------------------------------
 
-    function steamrollArray(arr) {
-      const flattenedArray = []
-      // Loop over array contents
-      for (let i = 0; i < arr.length; i++) {
-        if (Array.isArray(arr[i])) {
-          // Recursively flatten entries that are arrays
-          //  and push into the flattenedArray
-          flattenedArray.push(...steamrollArray(arr[i]));
-        } else {
-          // Copy contents that are not arrays
-          flattenedArray.push(arr[i])
-        }
-      }
-      return flattenedArray;
+// 19)----- Steamroller -----
+
+function steamrollArray(arr) {
+  const flattenedArray = []
+  // Loop over array contents
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      // Recursively flatten entries that are arrays
+      //  and push into the flattenedArray
+      flattenedArray.push(...steamrollArray(arr[i]));
+    } else {
+      // Copy contents that are not arrays
+      flattenedArray.push(arr[i])
     }
+  }
+  return flattenedArray;
+}
 
-    // console.log(steamrollArray([1, [2], [3, [[4]]]]))
+// console.log(steamrollArray([1, [2], [3, [[4]]]]))
 
-    // ----------------------------------------------------------------------------------------------------------
-    
-    // 20)----- Arguments Optional -----
-    function addTogether() {
-      const [first, second] = arguments;
-    
-      function addSecond(second) {
-        if (typeof (second) === "number") return first + second;
-      }
-    
-      if (typeof (first) === "number") {
-        if (arguments.length === 1) return addSecond;
-        if (arguments.length === 2) return addSecond(second);
-      }
-    }
-    // console.log(addTogether(2,5))
+// ----------------------------------------------------------------------------------------------------------
 
-    // ----------------------------------------------------------------------------------------------------------
-    
-    // 21)-----  -----
+// 20)----- Arguments Optional -----
+function addTogether() {
+  const [first, second] = arguments;
+
+  function addSecond(second) {
+    if (typeof (second) === "number") return first + second;
+  }
+
+  if (typeof (first) === "number") {
+    if (arguments.length === 1) return addSecond;
+    if (arguments.length === 2) return addSecond(second);
+  }
+}
+// console.log(addTogether(2,5))
+
+// ----------------------------------------------------------------------------------------------------------
+
+// 21)----- Palindrome Checker -----
+function palindrome(str) {
+  let origin = str
+    .replace(/[^a-zA-Z0-9]/g, '')
+    .toLowerCase()
+  let reversed = origin
+    .split('')
+    .reverse()
+    .join('')
+  return origin === reversed
+}
+// console.log(palindrome("not a palindrome"))
+
+
+
+
+// ----------------------------------------------------------------------------------------------------------
+
+// 22)-----  -----

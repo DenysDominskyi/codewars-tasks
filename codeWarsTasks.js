@@ -530,20 +530,20 @@ function isSolved(board) {
     
     static toRoman(number) {
       const romanNumerals = [
-        { value: 1000, symbol: "M" },
-      { value: 900, symbol: "CM" },
-      { value: 500, symbol: "D" },
-      { value: 400, symbol: "CD" },
-      { value: 100, symbol: "C" },
-      { value: 90, symbol: "XC" },
-      { value: 50, symbol: "L" },
-      { value: 40, symbol: "XL" },
-      { value: 10, symbol: "X" },
-      { value: 9, symbol: "IX" },
-      { value: 5, symbol: "V" },
-      { value: 4, symbol: "IV" },
-      { value: 1, symbol: "I" }
-    ];
+          { value: 1000, symbol: "M" },
+        { value: 900, symbol: "CM" },
+        { value: 500, symbol: "D" },
+        { value: 400, symbol: "CD" },
+        { value: 100, symbol: "C" },
+        { value: 90, symbol: "XC" },
+        { value: 50, symbol: "L" },
+        { value: 40, symbol: "XL" },
+        { value: 10, symbol: "X" },
+        { value: 9, symbol: "IX" },
+        { value: 5, symbol: "V" },
+        { value: 4, symbol: "IV" },
+        { value: 1, symbol: "I" }
+      ];
     
     let result = "";
     
@@ -658,11 +658,21 @@ const dividedBy = (x) => (y) => Math.floor(y / x);
 
 // _______________________________________________________________________________________________________________
   
-// 20)-----  -----
+// 20)----- Simple Pig Latin -----
+function pigIt(str){
+  return str.split(' ').map(word => /\W/.test(word) ? word : word.replace(/^(.)(.*)$/, '$2$1') + 'ay').join(' ')
+}
+// console.log(pigIt('Pig latin is cool ?'))
+
+
+// _______________________________________________________________________________________________________________
+  
+// 21)-----  -----
+
 
 
 
 
 // _______________________________________________________________________________________________________________
   
-// 21)-----  -----
+// 22)-----  -----
