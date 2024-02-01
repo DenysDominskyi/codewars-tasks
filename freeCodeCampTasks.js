@@ -268,4 +268,78 @@ function palindrome(str) {
 
 // ----------------------------------------------------------------------------------------------------------
 
-// 22)-----  -----
+// 22)----- Telephone Number Validator -----
+function telephoneCheck(str) {
+  return /^(1\s|1)?(\(\d{3}\)|\d{3})(-|\s)?\d{3}(-|\s)?\d{4}$/.test(str);
+}
+
+console.log(telephoneCheck("1 555-555-5555"))
+// telephoneCheck("555-555-5555")
+
+// ----------------------------------------------------------------------------------------------------------
+
+// 23)----- Cash Register -----
+function checkCashRegister(price, cash, cid) {
+  const currencyUnit = {
+    "PENNY": 0.01,
+    "NICKEL": 0.05,
+    "DIME": 0.1,
+    "QUARTER": 0.25,
+    "ONE": 1,
+    "FIVE": 5,
+    "TEN": 10,
+    "TWENTY": 20,
+    "ONE HUNDRED": 100
+  };
+
+  let changeDue = cash - price;
+  let change = [];
+  let totalCid = 0;
+
+  // Calculate the total cash in drawer
+  for (let i = 0; i < cid.length; i++) {
+    totalCid += cid[i][1];
+  }
+  totalCid = Number(totalCid.toFixed(2))
+
+  // Check if there's insufficient funds
+  if (changeDue > totalCid) {
+    return { status: "INSUFFICIENT_FUNDS", change: [] }
+  }
+
+  // Check if exact change is possible
+  if (changeDue === totalCid) {
+    return { status: "CLOSED", change: cid }
+  }
+
+  // Calculate change
+  for (let i = cid.length - 1; i >= 0; i--) {
+    const denomination = currencyUnit[cid[i][0]]
+    const availableAmount = cid[i][1]
+    const maxPossibleCoins = Math.floor(availableAmount / denomination)
+    let coinsToReturn = Math.min(maxPossibleCoins, Math.floor(changeDue / denomination))
+
+    if (coinsToReturn > 0) {
+      change.push([cid[i][0], coinsToReturn * denomination])
+      changeDue = Number((changeDue - coinsToReturn * denomination).toFixed(2))
+    }
+  }
+
+  // Check if changeDue is not completely paid
+  if (changeDue > 0) {
+    return { status: "INSUFFICIENT_FUNDS", change: [] }
+  }
+
+  return { status: "OPEN", change: change }
+}
+// console.log(checkCashRegister(19.5, 20, [
+//   ["PENNY", 1.01], 
+//   ["NICKEL", 2.05], 
+//   ["DIME", 3.1], 
+//   ["QUARTER", 4.25], 
+//   ["ONE", 90], 
+//   ["FIVE", 55], 
+//   ["TEN", 20], 
+//   ["TWENTY", 60], 
+//   ["ONE HUNDRED", 
+//   100]]))
