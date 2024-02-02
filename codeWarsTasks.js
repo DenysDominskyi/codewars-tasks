@@ -685,7 +685,50 @@ function humanReadable (seconds) {
 }
 // console.log(humanReadable(9999))
 
+// _______________________________________________________________________________________________________________
+  
+// 22)----- The Hashtag Generator -----
+function generateHashtag(str) {
+  // Check if the input string is empty or falsy
+  if (!str || str.trim() === "") {
+    return false;
+  }
+
+  // Capitalize the first letter of each word and join them
+  const capitalizedStr = str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
+
+  // Create the hashtag by adding '#' at the beginning
+  const hashtag = `#${capitalizedStr}`;
+
+  // Check if the length is within the limit
+  if (hashtag.length > 140) {
+    return false;
+  }
+
+  return hashtag;
+}
+console.log(generateHashtag("Codewars"))
+
+// _______________________________________________________________________________________________________________
+
+
+
+
+// 23)-----  -----
+
+// _______________________________________________________________________________________________________________
+
+
+
+
+// 24)-----  -----
+
+// _______________________________________________________________________________________________________________
+
+
+
+
+// 25)-----  -----
 
 // _______________________________________________________________________________________________________________
   
-// 22)-----  -----
