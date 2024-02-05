@@ -707,14 +707,25 @@ function generateHashtag(str) {
 
   return hashtag;
 }
-console.log(generateHashtag("Codewars"))
+// console.log(generateHashtag("Codewars"))
 
 // _______________________________________________________________________________________________________________
 
 
 
 
-// 23)-----  -----
+// 23)----- Product of consecutive Fib numbers -----
+function productFib(prod) {
+  let [prev, current] = [0, 1];
+
+  while (prev * current < prod) {
+    [prev, current] = [current, prev + current];
+  }
+
+  return [prev, current, prev * current === prod];
+}
+// console.log(productFib(714)); // should return [21, 34, true]
+
 
 // _______________________________________________________________________________________________________________
 
