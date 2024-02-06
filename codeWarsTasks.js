@@ -729,10 +729,27 @@ function productFib(prod) {
 
 // _______________________________________________________________________________________________________________
 
+// 24)----- First non-repeating character -----
+function firstNonRepeatingLetter(str) {
+  // Convert the string to lowercase to handle case insensitivity
+  const lowerCaseStr = str.toLowerCase();
 
+  // Loop through each character in the string
+  for (let i = 0; i < lowerCaseStr.length; i++) {
+    // Get the current character
+    const currentChar = lowerCaseStr[i];
 
+    // Check if the current character is repeated anywhere in the string
+    if (lowerCaseStr.indexOf(currentChar) === lowerCaseStr.lastIndexOf(currentChar)) {
+      // If not repeated, return the original character from the input string
+      return str[i];
+    }
+  }
 
-// 24)-----  -----
+  // If all characters are repeated, return an empty string
+  return "";
+}
+// console.log(firstNonRepeatingLetter('stress'))
 
 // _______________________________________________________________________________________________________________
 
