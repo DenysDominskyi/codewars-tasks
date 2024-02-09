@@ -753,10 +753,23 @@ function firstNonRepeatingLetter(str) {
 
 // _______________________________________________________________________________________________________________
 
+// 25)----- Weight for weight -----
+function orderWeight(strng) {
+  const sum = str => str.split('').reduce((sum, num) => sum + parseInt(num), 0)
+  const sortedArr = strng
+    .split(' ')
+    .sort((a, b) => {
+      const sumA = sum(a)
+      const sumB = sum(b)
+      return sumA === sumB ? a.localeCompare(b) : sumA - sumB
+    })
+  return sortedArr.join(' ')
+}
+console.log(orderWeight("103 123 4444 99 2000"))
 
+// _______________________________________________________________________________________________________________
 
-
-// 25)-----  -----
+// 26)-----  -----
 
 // _______________________________________________________________________________________________________________
   
