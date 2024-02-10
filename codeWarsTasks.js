@@ -765,9 +765,51 @@ function orderWeight(strng) {
     })
   return sortedArr.join(' ')
 }
-console.log(orderWeight("103 123 4444 99 2000"))
+// console.log(orderWeight("103 123 4444 99 2000"))
 
 // _______________________________________________________________________________________________________________
+
+// 26)----- Greed is Good -----
+function score(dice) {
+  const rules = {
+    1: { threeOfAKind: 1000, single: 100, singleWithFive: 150 },
+    2: { threeOfAKind: 200 },
+    3: { threeOfAKind: 300 },
+    4: { threeOfAKind: 400 },
+    5: { threeOfAKind: 500, single: 50, singleWithOne: 150 },
+    6: { threeOfAKind: 600 }
+  };
+
+  const counts = {}
+  dice.forEach(num => counts[num] ? counts[num]++ : counts[num] = 1)
+
+  let score = 0;
+
+  for (let num in counts) {
+    if (counts[num] >= 3) {
+      score += rules[num].threeOfAKind;
+      if (num === "1") {
+        score += (counts[num] - 3) * rules[num].single;
+      } else if (num === "5") {
+        score += (counts[num] - 3) * rules[num].single;
+        if (counts["1"]) {
+          score += (counts[num] - 3) * rules[num].singleWithOne;
+        }
+      }
+    } else if (num === "1") {
+      score += (counts[num]) * rules[num].single;
+    } else if (num === "5") {
+      score += (counts[num]) * rules[num].single;
+    }
+  }
+
+  return score;
+}
+console.log(score( [1, 5, 1, 4, 3] ))
+
+// _______________________________________________________________________________________________________________
+
+
 
 // 26)-----  -----
 
