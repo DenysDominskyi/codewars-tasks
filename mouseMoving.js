@@ -11,3 +11,17 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('mouseout', () => {
     cursor.style.display = 'none'
 })
+
+// ------------Navbar------------
+
+const navBtn = document.querySelector('#nav-btn')
+const navbar = document.querySelector('#nav-bar')
+navBtn.onclick = () => {
+    if(navbar.className === 'showed'){
+        navbar.className = 'hidden'
+        navBtn.className = 'show'
+    } else {
+        navbar.className = 'showed'
+        navBtn.className = 'hide'
+    }
+}

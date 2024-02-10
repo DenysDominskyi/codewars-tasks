@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: rgb(5, 50, 23);
+}
+
+/* ------------------------------------------------------------------------------------- */
+
+button {
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.btn-back{
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width:100px;
+    height:40px;
+    top: 10px;
+    left: 10px;
+    font-size: calc(.3rem + 1vw);
+    font-weight:bold;
+    font-family:Arial;
+    border-width:1px;
+    color:#3a8a9e;
+    border-color:#d6bcd6;
+    border-radius: 15px;
+    box-shadow: 3px 4px 0px 0px #899599;
+    background:linear-gradient(#ededed, #bab1ba);
+    text-decoration: none;
+}
+.btn-back:hover {
+    background: linear-gradient(#bab1ba, #ededed);
+}
+
+/* ------------------------------------------------------------------------------------- */
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    margin-top: calc(.5rem + 10vh);
+    margin-bottom: calc(.5rem + 10vh);
+    font-size: calc(2rem + 2vw);
+    color: blanchedalmond;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .3);
+}
+
+.scoreboard h2 {
+    color: blanchedalmond;
+}
+
+#score {
+    font-size: calc(1rem + 2vh);
+    color: antiquewhite;
+}
+
+.prevBoard{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 10%;
+    right: 5%;
+    width: calc(80px + .5vw);
+    height: 55%;
+    color: rgb(241, 241, 229);
+    background: rgba(0, 0, 0, .3);
+    border-radius: 5px;
+    font-size: calc(.2rem + 1.5vh);
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 5px; /* Ширина скролбара */
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f11e; /* Колір фону скролбара */
+}
+::-webkit-scrollbar-thumb {
+    background: #888; /* Колір покажчика скролбара */
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Колір покажчика скролбара при наведенні */
+}
+
+.prevBoard h4 {
+    text-align: center;
+    margin: 5px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+    padding: 15px;
+    width: 70%;
+}
+.image-container img{
+    width: 15%;
+    height: 15%;
+}
